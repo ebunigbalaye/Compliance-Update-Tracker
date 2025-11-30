@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe for Compliance Updates</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .helper-text {
+            font-size: 12px;
+            color: #555;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up for Compliance Updates</h2>
+        <form method="post">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="{{ form_data.name }}" required>
+            {% if errors.name %}
+                <p class="error-message">{{ errors.name[0] }}</p>
+                <p class="helper-text">Name must be at least 3 characters.</p>
+            {% endif %}
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="{{ form_data.email }}" required>
+            {% if errors.email %}
+                <p class="error-message">{{ errors.email[0] }}</p>
+            {% endif %}
+
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+</body>
+</html>
